@@ -32,7 +32,7 @@ namespace AppLib.Patterns.Cqs
     public QueryResponse(Q result, IEnumerable<IResponseMessage> messages = null)
     : base(messages ?? Enumerable.Empty<IResponseMessage>())
     {
-      Payload = Guard.IsNotNull(result, nameof(result));
+      Payload = result.to_maybe().GetValueOrDefault();
     }
 
     public static QueryResponse<Q> Success(Q payload)
