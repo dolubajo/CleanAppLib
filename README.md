@@ -6,4 +6,4 @@ https://docs.microsoft.com/en-us/nuget/quickstart/create-and-publish-a-package-u
 Each build creates a new nupkg file ready for publishing
 
 Publish to nuget
-dotnet nuget push CleanAppLib.1.1.0.nupkg -k <KEY_HERE> -s https://api.nuget.org/v3/index.json
+dotnet nuget push bin/Debug/CleanAppLib.x.x.x.nupkg -k xxxKEYxHERExxx -s https://api.nuget.org/v3/index.json

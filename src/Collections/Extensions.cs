@@ -34,13 +34,12 @@ namespace AppLib.Collections
       }
     }
 
-    public static IEnumerable<IPositionedElement> Insert(this IEnumerable<IPositionedElement> index
-                                                 , int insertAt)
+    public static IEnumerable<IPositionedElement> PrepareInsertion(this IEnumerable<IPositionedElement> index, int insertAt)
     {
       Guard.IsNotNull(index, "index");
       Guard.IsNotNull(insertAt, "insert_at");
-      Guard.EnforcePredicate(insertAt >= 1, "insert_at.postion out of range. An index starts at 1.");
-      Guard.EnforcePredicate(insertAt <= index.Count() + 1, "insert_at.postion out of range. Can not insert an element which would result in the index not being contiguous.");
+      Guard.EnforcePredicate(insertAt >= 1, "insert_at.postion out of range. A position starts at 1.");
+      Guard.EnforcePredicate(insertAt <= index.Count() + 1, "insert_at.postion out of range. A position ends at Count + 1");
 
       // Note - insisting on the index being contiguous allow insert 
       //        to simply update the position of all elements that need 
@@ -57,7 +56,7 @@ namespace AppLib.Collections
       return index;
     }
 
-    public static IEnumerable<IPositionedElement> Remove(this IEnumerable<IPositionedElement> index
+    public static IEnumerable<IPositionedElement> PrepareRemoval(this IEnumerable<IPositionedElement> index
                                                  , int removeAt)
     {
       Guard.IsNotNull(index, "index");
@@ -79,7 +78,7 @@ namespace AppLib.Collections
       return index;
     }
 
-    public static IEnumerable<IPositionedElement> Move(this IEnumerable<IPositionedElement> index, int from, int to)
+    public static IEnumerable<IPositionedElement> PrepareRelocation(this IEnumerable<IPositionedElement> index, int from, int to)
     {
 
       Guard.IsNotNull(index, "index");
